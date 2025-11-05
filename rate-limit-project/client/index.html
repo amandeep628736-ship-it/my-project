@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>API Rate Limit Tester</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; padding: 20px }
+    button { margin-right: 8px }
+    .badge { display:inline-block; padding:6px 10px; border-radius:6px; background:#f2f2f2; margin:4px }
+    .controls { margin-top: 12px }
+    .jwt-input { width: 400px }
+  </style>
+</head>
+<body>
+  <h2>API Rate Limit Tester</h2>
+  <div>
+    <button id="btnPublic">Call /public</button>
+    <button id="btnProtected">Call /protected</button>
+  </div>
+  <div class="controls">
+    <label for="jwt">JWT token (optional):</label>
+    <input id="jwt" class="jwt-input" placeholder="Paste JWT token here" aria-label="JWT token" />
+  </div>
+  <h3>Last response</h3>
+  <pre id="output">No calls yet</pre>
+
+  <script>
+    async function call(path) {
+      const token = document.getElementById('jwt').value.trim();
+      const headers = { 'Content-Type': 'application/json' };
+      if (token) headers['Authorization'] = 'Bearer ' + token;
+      try {
+        const r = await fetch(path, { headers });
+        const text = await r.text();
+        const lines = [];
+        lines.push('status: ' + r.status);
+        ['X-RateLimit-Limit','X-RateLimit-Remaining','X-RateLimit-Reset','Retry-After'].forEach(h => lines.push(h+': '+(r.headers.get(h)||'-')));
+        lines.push('body:\n' + text);
+        document.getElementById('output').textContent = lines.join('\n');
+      } catch (e) {
+        document.getElementById('output').textContent = 'Error: ' + e.message;
+      }
+    }
+    document.getElementById('btnPublic').addEventListener('click', () => call('/public'));
+    document.getElementById('btnProtected').addEventListener('click', () => call('/protected'));
+  </script>
+</body>
+</html>

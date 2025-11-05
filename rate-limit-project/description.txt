@@ -1,0 +1,29 @@
+This experiment involves designing and implementing a robust API rate limiting and throttling system for a Node.js (Express) application using Redis as the core data store for request counts and limits. The goal is to control the flow of incoming requests from users, limiting them to a specified maximum number of requests per time interval (e.g., 100 requests per minute). The system enforces limits per user identity or client IP and also supports different limits per API route.
+
+Key components and workflow include:
+
+Rate Limiting Logic:
+The rate limiting is implemented via middleware that runs before API route handlers. It uses Redis atomic operations (such as INCR and EXPIRE) to track the number of requests each user or IP has made within the defined time window. Redis keys are structured to scope counts by route and user (e.g., rate_limit:/api/orders:userId).
+
+HTTP Semantics for Rate Limits:
+When a client exceeds their allowed request quota, the system responds with HTTP status 429 (Too Many Requests). The response includes standard headers like X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, and Retry-After to communicate the quota and reset time to clients, enabling them to handle rate limits gracefully.
+
+User Identity and Fallbacks:
+The system identifies API consumers primarily by authenticated JWT tokens (using the sub claim as user ID). For unauthenticated requests, it falls back to using the client’s IP address. It can also support API keys for identification.
+
+Distributed and Scalable Design:
+Using Redis ensures the system works transparently across multiple app instances, providing a consistent view of rate limits in a horizontally scalable environment. Atomic Redis commands ensure race conditions are avoided.
+
+Audit and Monitoring:
+Sampled events of rate limiting (throttled requests) are persisted to MongoDB to enable analytics and operational monitoring. Metrics on allowed and denied requests, along with latency summaries, support observability.
+
+Admin and Flexibility Features:
+The system includes secure admin endpoints or UI for configuring default and route-specific rate limits, enabling temporary exemptions, and hot-reloading configurations without restarting the app.
+
+Client Testing UI:
+A React-based client interface allows developers or testers to exercise API endpoints, visualize their quota usage, remaining requests, and reset countdown timers, with charts for clear understanding.
+
+Resilience and Security Considerations:
+The rate limiter handles Redis failures gracefully, preventing service disruptions. Security best practices such as input validation, CORS configuration, and least-privilege access to Redis and MongoDB are enforced.
+
+This experiment results in a professional API rate limiting solution that protects backend resources from abuse, enforces fair usage across authenticated and anonymous clients, maintains performance and data consistency in distributed deployments, and provides clear, actionable feedback to clients and administrators.
