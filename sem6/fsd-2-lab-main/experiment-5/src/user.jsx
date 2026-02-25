@@ -1,7 +1,7 @@
 function User() {
   return (
     <div>
-      <h1>User name is Aryan Koundal</h1>
+      <h1>User name is Amandeep</h1>
     </div>
   );
 }
