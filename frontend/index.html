@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Yoga AI - Wearable Sensor Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧘‍♀️ Personalized AI Yoga Trainer</h1>
+            <p>Real-time analysis from wearable sensors</p>
+        </header>
+
+        <div class="controls">
+            <button id="startBtn" class="btn btn-primary">▶️ Start Simulation</button>
+            <button id="stopBtn" class="btn btn-secondary" disabled>⏹️ Stop</button>
+            <span id="status">Ready to begin</span>
+        </div>
+
+        <div class="dashboard">
+            <!-- Sensor Readings -->
+            <div class="sensor-grid">
+                <div class="sensor-card">
+                    <h3>❤️ Heart Rate</h3>
+                    <div class="reading" id="heartRate">70 <span>bpm</span></div>
+                    <div class="status normal" id="hrStatus">Normal</div>
+                </div>
+                <div class="sensor-card">
+                    <h3>📐 Posture</h3>
+                    <div class="reading" id="posture">95 <span>°</span></div>
+                    <div class="status normal" id="postureStatus">Good</div>
+                </div>
+                <div class="sensor-card">
+                    <h3>🔥 Calories</h3>
+                    <div class="reading" id="calories">30 <span>cal</span></div>
+                    <div class="status normal" id="caloriesStatus">Low</div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="charts">
+                <canvas id="sensorChart"></canvas>
+            </div>
+
+            <!-- AI Recommendation -->
+            <div class="recommendation">
+                <h3>🤖 AI Recommendation</h3>
+                <div id="recStatus" class="status-badge normal">Normal</div>
+                <div id="recommendationText">Click Start to get personalized yoga suggestions!</div>
+                <div id="confidence">Confidence: --</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
