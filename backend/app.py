@@ -39,4 +39,3 @@ if __name__ == '__main__':
     print("🚀 Adaptive Yoga AI Backend starting on http://localhost:5000")
     print("📡 API ready at /predict (POST)")
     app.run(debug=True, port=5000)
-

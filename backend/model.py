@@ -1,5 +1,5 @@
 def get_yoga_recommendation(heart_rate, posture, calories):
-    """
+    \"\"\"
     Simple rule-based AI model for yoga recommendations.
     Mimics decision tree logic based on sensor thresholds.
     
@@ -7,7 +7,7 @@ def get_yoga_recommendation(heart_rate, posture, calories):
     - Heart Rate: Normal 60-100, High >100
     - Posture: Good >90°, Poor <90°
     - Calories: Low <50, High >100 (per session)
-    """
+    \"\"\"
     status = 'Normal'
     recommendation = 'Continue your practice'
     
@@ -18,7 +18,7 @@ def get_yoga_recommendation(heart_rate, posture, calories):
     # Priority 2: Poor posture → Alignment poses
     elif posture < 90:
         status = 'Needs Improvement'
-        recommendation = "Tree Pose (Vrksasana) - Improves balance and posture"
+        recommendation = \"Tree Pose (Vrksasana) - Improves balance and posture\"
     # Priority 3: High calories → Recovery
     elif calories > 100:
         status = 'Normal'
@@ -33,4 +33,3 @@ def get_yoga_recommendation(heart_rate, posture, calories):
         'recommendation': recommendation,
         'confidence': 0.85  # Simulated model confidence
     }
-

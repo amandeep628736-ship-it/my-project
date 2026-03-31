@@ -170,7 +170,7 @@ class YogaDashboard {
         const textEl = document.getElementById('recommendationText');
         const confEl = document.getElementById('confidence');
 
-        statusEl.className = `status-badge ${rec.status.toLowerCase().replace(' ', '-')}`;
+        statusEl.className = `status-badge ${rec.status.toLowerCase().replace(/ /g, '-')}`;
         statusEl.textContent = rec.status;
         textEl.textContent = rec.recommendation;
         confEl.textContent = `Confidence: ${(rec.confidence * 100).toFixed(0)}%`;
@@ -201,4 +201,3 @@ class YogaDashboard {
 document.addEventListener('DOMContentLoaded', () => {
     new YogaDashboard();
 });
-
