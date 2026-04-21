@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "sessionName": "Morning Flow",
+    "durationMinutes": 22,
+    "averageHeartRate": 76,
+    "caloriesBurned": 120,
+    "date": "2026-04-09"
+  },
+  {
+    "id": 2,
+    "sessionName": "Balance Check",
+    "durationMinutes": 18,
+    "averageHeartRate": 74,
+    "caloriesBurned": 95,
+    "date": "2026-04-08"
+  }
+]

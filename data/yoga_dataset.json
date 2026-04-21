@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "pose": "Mountain Pose",
+    "label": "Tadasana",
+    "heartRate": 72,
+    "accel": { "x": 0.08, "y": 0.12, "z": 0.95 },
+    "gyro": { "x": 0.02, "y": 0.01, "z": 0.05 },
+    "confidence": 0.92,
+    "difficulty": "Beginner",
+    "timestamp": "2026-04-09T08:20:00Z"
+  },
+  {
+    "id": 2,
+    "pose": "Downward Dog",
+    "label": "Adho Mukha Svanasana",
+    "heartRate": 78,
+    "accel": { "x": 0.34, "y": 0.81, "z": 0.40 },
+    "gyro": { "x": 0.12, "y": 0.26, "z": 0.09 },
+    "confidence": 0.89,
+    "difficulty": "Intermediate",
+    "timestamp": "2026-04-09T08:22:30Z"
+  },
+  {
+    "id": 3,
+    "pose": "Tree Pose",
+    "label": "Vrikshasana",
+    "heartRate": 80,
+    "accel": { "x": 0.15, "y": 0.04, "z": 0.96 },
+    "gyro": { "x": 0.04, "y": 0.15, "z": 0.18 },
+    "confidence": 0.94,
+    "difficulty": "Intermediate",
+    "timestamp": "2026-04-09T08:25:30Z"
+  }
+]
