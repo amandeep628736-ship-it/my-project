@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: elearning-platform
+    env: node
+    buildCommand: npm install && npx prisma generate && npx prisma db push && npm run build
+    startCommand: npm start
+    envVars:
+      - key: DATABASE_URL
+        value: "file:./dev.db"
